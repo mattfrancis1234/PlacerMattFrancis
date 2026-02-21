@@ -1,36 +1,16 @@
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
-type SearchBarProps = {
-  value: string;
-  onChangeText: (text: string) => void;
-};
-
-export default function SearchBar({ value, onChangeText }: SearchBarProps) {
+type Props = { value?: string; onChangeText?: (t: string) => void };
+export default function SearchBar({ value = "", onChangeText = () => {} }: Props) {
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Search..."
-        value={value}
-        onChangeText={onChangeText}
-      />
+    <View style={styles.wrap}>
+      <TextInput placeholder="Search..." value={value} onChangeText={onChangeText} style={styles.input} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 16,
-    marginVertical: 8,
-  },
-  input: {
-    backgroundColor: "#f0f0f0",
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    fontSize: 16,
-    borderWidth: 1,
-    borderColor: "#ddd",
-  },
+  wrap: { marginVertical: 8, marginHorizontal: 16 },
+  input: { backgroundColor: "#f8fafc", padding: 10, borderRadius: 8, borderWidth: 1, borderColor: "#e6e6e6" },
 });
